@@ -403,7 +403,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(variables('baseUrl'), concat(parameters('branch'), '/ibm-sip/',parameters('deploymentVersion'),'/deploy-sip/azuredeploy.json'))]",
+                    "uri": "[uri(variables('baseUrl'), concat(parameters('branch'), '/sterling/',parameters('deploymentVersion'),'/deploy-sip/azuredeploy.json'))]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

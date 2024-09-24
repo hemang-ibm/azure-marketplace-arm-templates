@@ -211,11 +211,11 @@
                 "description": "Domain name prefix for the public IP address"
             }
         },
-        "deployMQ": {
+        "deploySIP": {
             "type": "bool",
             "defaultValue": true,
             "metadata": {
-                "description": "Flag to determine whether to run the VM extension that installs MQ (Debug Only)"
+                "description": "Flag to determine whether to run the VM extension that installs SIP (Debug Only)"
             }
         },
         "openShiftApiUrl": {
@@ -249,11 +249,11 @@
                 "description": "Password for the cluster administrator. Can be either a password or a token depending upon openShiftAuthType setting."
             }
         },
-        "mqVersion": {
+        "sipVersion": {
             "type": "string",
-            "defaultValue": "mq",
+            "defaultValue": "1.0",
             "metadata": {
-                "description": "Version of IBM MQ operator to install"
+                "description": "Version of IBM SIP operator to install"
             }
         },
         "entitlementKey": {
@@ -301,7 +301,7 @@
         },
         "deploymentVersion": {
             "type": "string",
-            "defaultValue": "2024-03",
+            "defaultValue": "2024-09",
             "metadata": {
                 "description": "Deployment version to use"
             }
@@ -378,11 +378,11 @@
             "log_level": "[parameters('logLevel')]",
             "entitlementKey": "[if(equals(parameters('entitlementKey'),''),json('null'),parameters('entitlementKey'))]",
             "create_secret": "[not(equals(parameters('entitlementKey'),''))]",
-            "mq": {
-                "version": "[parameters('mqVersion')]",
+            "sip": {
+                "version": "[parameters('sipVersion')]",
                 "branch": "[parameters('branch')]",
                 "version_uri": "https://raw.githubusercontent.com/IBM/azure-marketplace-arm-templates",
-                "version_path": "ibm-mq/version-files"
+                "version_path": "sterling/version-files"
             },
             "operator": {
                 "scope": "[parameters('operatorScope')]",
@@ -540,8 +540,8 @@
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2023-09-01",
             "location": "[parameters('location')]",
-            "name": "[concat(parameters('vmName'),'/','installMQ')]",
-            "condition": "[parameters('deployMQ')]",
+            "name": "[concat(parameters('vmName'),'/','installSIP')]",
+            "condition": "[parameters('deploySIP')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
             ],
@@ -552,18 +552,18 @@
                 "autoUpgradeMinorVersion": true,
                 "protectedSettings": {
                     "fileUris": [
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/templates/catalogsource.j2'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/templates/operatorgroup.j2'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/templates/subscription-cluster.j2'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/templates/subscription-namespace.j2'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/create-catalog.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/create-og.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/create-subscription.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/create-secret.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/oc-login.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/install-oc.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/playbooks/main.yaml'))]",
-                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/ibm-mq/',parameters('deploymentVersion'),'/deploy-mq/wait-for-cloud-init.sh'))]"
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/templates/catalogsource.j2'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/templates/operatorgroup.j2'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/templates/subscription-cluster.j2'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/templates/subscription-namespace.j2'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/create-catalog.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/create-og.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/create-subscription.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/create-secret.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/oc-login.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/install-oc.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/playbooks/main.yaml'))]",
+                        "[uri(variables('baseUrl'),concat(parameters('branch'),'/sterling/',parameters('deploymentVersion'),'/deploy-sip/wait-for-cloud-init.sh'))]"
                     ],
                     "commandToExecute": "[concat('/bin/bash ./wait-for-cloud-init.sh && /usr/local/bin/ansible-playbook ./main.yaml --extra-vars \"', replace(string(variables('scriptParameters')), '\"', '\\\"'),'\"')]"
                 }
