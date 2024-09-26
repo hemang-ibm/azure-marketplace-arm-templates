@@ -33,9 +33,9 @@
         },
         "sipVersion": {
             "type": "string",
-            "defaultValue": "sip",
+            "defaultValue": "2024-09",
             "metadata": {
-                "description": "Version of CP4I to be installed"
+                "description": "Version of SIP to be installed"
             }
         },
         "openshiftApiUrl": {
@@ -266,7 +266,7 @@
         },
         "deploymentVersion": {
             "type": "string",
-            "defaultValue": "2024-07",
+            "defaultValue": "2024-09",
             "metadata": {
                 "description": "Deployment version to use (Internal)"
             }
