@@ -381,7 +381,7 @@
             "sip": {
                 "version": "[parameters('sipVersion')]",
                 "branch": "[parameters('branch')]",
-                "version_uri": "https://raw.githubusercontent.com/IBM/azure-marketplace-arm-templates",
+                "version_uri": "https://github.com/hemang-ibm/azure-marketplace-arm-templates/",
                 "version_path": "sterling/version-files"
             },
             "operator": {
