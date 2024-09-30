@@ -315,7 +315,7 @@
         }
     },
     "variables": {
-        "baseUrl": "[uri('https://raw.githubusercontent.com/Hemang-ibm/azure-marketplace-arm-templates/',parameters('branch'))]",
+        "baseUrl": "[uri('https://raw.githubusercontent.com/Hemang-ibm/azure-marketplace-arm-templates/blob/',parameters('branch'))]",
         "nsgName": "[concat(parameters('namePrefix'), '-nsg')]",
         "nicName": "[concat(parameters('namePrefix'),'-nic')]",
         "linuxConfigSSH": {
