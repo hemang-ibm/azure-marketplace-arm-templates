@@ -285,7 +285,7 @@
         
     },
     "variables": {
-        "baseUrl": "[uri('https://raw.githubusercontent.com/IBM/azure-marketplace-arm-templates/',parameters('branch'))]"
+        "baseUrl": "[uri('https://github.com/hemang-ibm/azure-marketplace-arm-templates/',parameters('branch'))]"
     },
     "resources": [
         { 
