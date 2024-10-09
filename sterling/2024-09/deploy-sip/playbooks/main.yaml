@@ -9,8 +9,8 @@
     sip:
       version: "1.0"
       branch: "main"
-      version_uri: "https://raw.githubusercontent.com/IBM/azure-marketplace-arm-templates"
-      version_path: "ibm-sip/version-files"
+      version_uri: "https://raw.githubusercontent.com/hemang-ibm/azure-marketplace-arm-templates"
+      version_path: "sterling/version-files"
     operator:
       scope: "namespace"
       namespace: "sip"
