@@ -26,10 +26,10 @@
     {
       "name": "IBM OMS",
       "metadata": {
-        "name": "ibm-oms"
+        "name": "ibm-oms-gateway"
       },
       "spec": {
-        "name": "ibm-oms",
+        "name": "ibm-oms-gateway",
         "channel": "v1.0",
         "source": "ibm-oms-operator-catalogsource",
         "installPlanApproval": "Automatic"
