@@ -203,9 +203,8 @@
             "type": "string",
             "defaultValue": "RHEL 9.2",
             "allowedValues": [
-                "RHEL 8.6",
-                "RHEL 8.7",
-                "RHEL 9.2"
+                "RHEL 9.2",
+                "RHEL 9.4"
             ],
             "metadata": {
                 "description": "Operating system version"

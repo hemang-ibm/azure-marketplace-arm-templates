@@ -4,7 +4,7 @@
     "version": "0.1.2-preview",
     "parameters": {
 		"config": {
-			"isWizard": true,
+			"isWizard": false,
 			"basics": {
 				"resourceGroup": {
 					"constraints": {
@@ -93,7 +93,7 @@
         "steps": [
             {
                 "name": "ibmsip",
-                "label": "IBM sip",
+                "label": "IBM Sterling Integration Platform",
                 "elements": [
                     {
 						"name": "includeEntitlementKey",
@@ -121,6 +121,23 @@
 							"hideConfirmation": false
 						},
 						"visible": "[steps('ibmsip').includeEntitlementKey]"
+					},
+					{
+						"name": "sipVersion",
+						"type": "Microsoft.Common.DropDown",
+						"label": "Sip version",
+						"defaultValue": ["1.0"],
+						"toolTip": "Select the sip version",
+						"constraints": {
+							"allowedValues": [
+								{
+									"label": "1.0",
+									"description": "Sip 1.0 version will be installed.",
+									"value": "1.0"
+								}
+							]
+						},
+						"visible": false	
 					},
 					{
 						"name": "operatorScope",
@@ -328,16 +345,12 @@
 						"constraints": {
 							"allowedValues": [
 								{
-									"label": "RHEL 8.6",
-									"value": "RHEL 8.6"
-								},
-								{
-									"label": "RHEL 8.7",
-									"value": "RHEL 8.7"
-								},
-								{
 									"label": "RHEL 9.2",
 									"value": "RHEL 9.2"
+								},
+								{
+									"label": "RHEL 9.4",
+									"value": "RHEL 9.4"
 								}
 							]
 						},
@@ -452,6 +465,7 @@
             "namePrefix": "[basics('namePrefix')]",
             "location": "[location()]",
             "ibmEntitlementKey": "[steps('ibmsip').ibmEntitlementKey]",
+			"sipVersion": "[steps('ibmsip').sipVerision]",
 			"operatorScope": "[steps('ibmsip').operatorScope]",
 			"operatorNamespace": "[steps('ibmsip').nameSpace]",
 			"openshiftApiUrl": "[basics('clusterDetails').properties.apiserverProfile.url]",

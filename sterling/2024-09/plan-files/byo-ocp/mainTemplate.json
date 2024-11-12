@@ -33,9 +33,9 @@
         },
         "sipVersion": {
             "type": "string",
-            "defaultValue": "sip",
+            "defaultValue": "1.0",
             "metadata": {
-                "description": "Version of CP4I to be installed"
+                "description": "Version of SIP to be installed"
             }
         },
         "openshiftApiUrl": {
@@ -213,11 +213,10 @@
         },
         "vmOSVersion": {
             "type": "string",
-            "defaultValue": "RHEL 8.7",
+            "defaultValue": "RHEL 9.2",
             "allowedValues": [
-                "RHEL 8.6",
-                "RHEL 8.7",
-                "RHEL 9.2"
+                "RHEL 9.2",
+                "RHEL 9.4"
             ],
             "metadata": {
                 "description": "Operating system version"

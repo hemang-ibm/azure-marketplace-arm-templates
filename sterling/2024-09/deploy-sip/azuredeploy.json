@@ -162,11 +162,10 @@
         },
         "vmOSVersion": {
             "type": "string",
-            "defaultValue": "RHEL 8.7",
+            "defaultValue": "RHEL 9.2",
             "allowedValues": [
-                "RHEL 8.6",
-                "RHEL 8.7",
-                "RHEL 9.2"
+                "RHEL 9.2",
+                "RHEL 9.4"
             ],
             "metadata": {
                 "description": "Operating system version"
@@ -333,22 +332,16 @@
             "disablePasswordAuthentication": false
         },
         "imageReference": {
-            "RHEL 8.6": {
-                "publisher": "RedHat",
-                "offer": "RHEL",
-                "sku": "8_6",
-                "version": "latest"
-            },
-            "RHEL 8.7": {
-                "publisher": "RedHat",
-                "offer": "RHEL",
-                "sku": "8_7",
-                "version": "latest"
-            },
             "RHEL 9.2": {
                 "publisher": "RedHat",
                 "offer": "RHEL",
                 "sku": "9_2",
+                "version": "latest"
+            },
+             "RHEL 9.4": {
+                "publisher": "RedHat",
+                "offer": "RHEL",
+                "sku": "9_4",
                 "version": "latest"
             }
         },
