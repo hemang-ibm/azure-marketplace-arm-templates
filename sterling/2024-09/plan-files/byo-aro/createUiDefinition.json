@@ -465,7 +465,7 @@
             "namePrefix": "[basics('namePrefix')]",
             "location": "[location()]",
             "ibmEntitlementKey": "[steps('ibmsip').ibmEntitlementKey]",
-			"sipVersion": "[steps('ibmsip').sipVerision]",
+			"sipVersion": "[steps('ibmsip').sipVersion]",
 			"operatorScope": "[steps('ibmsip').operatorScope]",
 			"operatorNamespace": "[steps('ibmsip').nameSpace]",
 			"openshiftApiUrl": "[basics('clusterDetails').properties.apiserverProfile.url]",
