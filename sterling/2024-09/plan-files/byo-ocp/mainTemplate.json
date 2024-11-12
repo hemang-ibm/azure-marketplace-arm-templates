@@ -81,7 +81,7 @@
         },
         "operatorNamespace": {
             "type": "string",
-            "defaultValue": "ibmsip",
+            "defaultValue": "sip-operators",
             "metadata": {
                 "description": "Namespace to be utilized for the operators if namespace scoped"
             }
@@ -277,7 +277,7 @@
         },
         "deploymentVersion": {
             "type": "string",
-            "defaultValue": "2024-07",
+            "defaultValue": "2024-09",
             "metadata": {
                 "description": "Deployment version to use (Internal)"
             }
@@ -296,7 +296,7 @@
         
     },
     "variables": {
-        "baseUrl": "[uri('https://raw.githubusercontent.com/IBM/azure-marketplace-arm-templates/',parameters('branch'))]"
+        "baseUrl": "[uri('https://raw.githubusercontent.com/hemang-ibm/azure-marketplace-arm-templates/',parameters('branch'))]"
     },
     "resources": [
         { 
@@ -414,7 +414,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(variables('baseUrl'), concat(parameters('branch'), '/ibm-sip/',parameters('deploymentVersion'),'/deploy-sip/azuredeploy.json'))]",
+                    "uri": "[uri(variables('baseUrl'), concat(parameters('branch'), '/sterling/',parameters('deploymentVersion'),'/deploy-sip/azuredeploy.json'))]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
