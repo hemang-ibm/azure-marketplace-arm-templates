@@ -555,7 +555,7 @@
 			"vmPublicIpResourceGroup": "[steps('deployVm').vmPublicIP.resourceGroup]",
 			"vmPublicIpNewOrExisting": "[steps('deployVm').vmPublicIP.newOrExistingOrNone]",
 			"vmDomainName": "[steps('deployVm').vmPublicIP.domainNameLabel]",
-			"deploymentVersion": "2024-07",
+			"deploymentVersion": "2024-09",
 			"logLevel": "info"
          }
     }
